@@ -20,8 +20,11 @@ const player = {
     cognome: 'Capone',
     age: 27,
     averagePoints: 0,
-    threeShots: 55,
+    threeShots: 0,
 }
+
+const names = ['Carmelo', 'Pietro', 'Giùann', 'Ajeje', 'Franco', 'Ennio', 'Riccardino'];
+const surnames = ['Skifatteruft', 'Fitzgerald', 'Culodigomma', 'Fuffolo', 'Muro', 'Capatonda', 'Jones'];
 
 const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Z'];
 
@@ -31,6 +34,10 @@ player.averagePoints = averageP();
 player.threeShots = threeShots();
 
 console.log(player.nome, player.cognome, player.age, player.id);
+
+const tenPlayers = [];
+gen10Players(tenPlayers, letters);
+console.log(tenPlayers);
 
 
 
@@ -45,7 +52,7 @@ function getID(array) {
     const x = Math.floor((Math.random() * 999));
     ID += x;
 
-    return ID
+    return ID;
 }
 
 function averageP() {
@@ -54,4 +61,18 @@ function averageP() {
 
 function threeShots() {
     return Math.floor((Math.random() * 101));
+}
+
+function gen10Players(array, letters) {
+    for (let i = 1; i < 11; i++) {
+        let x = Math.floor((Math.random() * 8));
+        let y = Math.floor((Math.random() * 7))
+        let newPlayer = {};
+        newPlayer.nome = names[x];
+        newPlayer.cognome = surnames[y];
+        newPlayer.ID = getID(letters);
+        newPlayer.averagePoints = averageP();
+        newPlayer.threeShots = threeShots();
+        array.push(newPlayer);
+    }
 }
