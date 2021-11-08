@@ -14,6 +14,7 @@
 5. Creare un nuovo array con i giocatori che hanno una media di punti superiore a 35 e la percentuale di successo per i tiri da 3 punti superiore all’80%.
 */
 
+// creazione di un oggetto player
 const player = {
     id: '',
     nome: 'Antonio',
@@ -23,21 +24,41 @@ const player = {
     threeShots: 0,
 }
 
+// creazione di tre array per la generazione casuale dell' ID e di "nome e Cognome"
 const names = ['Carmelo', 'Pietro', 'Giùann', 'Ajeje', 'Franco', 'Ennio', 'Riccardino'];
 const surnames = ['Skifatteruft', 'Fitzgerald', 'Culodigomma', 'Fuffolo', 'Muro', 'Capatonda', 'Jones'];
-
 const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Z'];
 
-
+// assegnazione casuale delle proprietà "ID", "media punti / partita" e "percentuale di successo per i tiri da tre", con delle funzioni
 player.id = getID(letters);
 player.averagePoints = averageP();
 player.threeShots = threeShots();
 
-console.log(player.nome, player.cognome, player.age, player.id);
-
+// creazione di un array di dieci giocatori creati in modo del tutto casuale
 const tenPlayers = [];
 gen10Players(tenPlayers, letters);
-console.log(tenPlayers);
+
+// creazione di un nuovo array contenente i soli giocatori che hanno una "media punti/partita" superiore a 35 ed una "percentuale di successo sui tiri da tre" superiore ad 80
+const topPlayers = tenPlayers.filter(x => x.averagePoints > 35 && x.threeShots > 80);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -65,14 +86,21 @@ function threeShots() {
 
 function gen10Players(array, letters) {
     for (let i = 1; i < 11; i++) {
-        let x = Math.floor((Math.random() * 8));
-        let y = Math.floor((Math.random() * 7))
+        let x = Math.floor((Math.random() * 7));
+        let y = Math.floor((Math.random() * 7));
         let newPlayer = {};
         newPlayer.nome = names[x];
         newPlayer.cognome = surnames[y];
         newPlayer.ID = getID(letters);
+        newPlayer.age = Math.floor((Math.random() * 20) + 17);
         newPlayer.averagePoints = averageP();
         newPlayer.threeShots = threeShots();
         array.push(newPlayer);
+        console.log(newPlayer);
     }
 }
+
+function checkRatings(averageP, threeShots, tenPlayers) {
+
+
+  }
